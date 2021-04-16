@@ -27,11 +27,15 @@ public class Main {
             }
         }
 
-        map.entrySet().stream().limit(100).forEach(System.out::println);
+    //    map.entrySet().stream().limit(20).forEach(System.out::println);
+        Map<String, Integer> sorted = new LinkedHashMap<>();
 
 
+        map.entrySet().stream()
+                .sorted(Map.Entry.<String,Integer>comparingByValue().reversed())
+                .forEachOrdered(entry -> sorted.put(entry.getKey(), entry.getValue()));
 
-
+        sorted.entrySet().stream().limit(20).forEach(System.out::println);
 
     }
 }
