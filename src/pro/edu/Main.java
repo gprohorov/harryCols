@@ -1,6 +1,7 @@
 package pro.edu;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -35,7 +36,17 @@ public class Main {
                 .sorted(Map.Entry.<String,Integer>comparingByValue().reversed())
                 .forEachOrdered(entry -> sorted.put(entry.getKey(), entry.getValue()));
 
-        sorted.entrySet().stream().limit(20).forEach(System.out::println);
+        String sorted20 = "";
+        int counter = 0;
+        for (Map.Entry<String,Integer> entry : sorted.entrySet()){
+            counter++;
+            sorted20 += entry.getKey() + " " + entry.getValue() + "\n";
+            if (counter == 20) break;
+        }
+        String sortedToString = sorted.toString();
+        Files.write(Paths.get("/home/george/Desktop/exam.txt"),
+                sorted20.getBytes(StandardCharsets.UTF_8));
+
 
     }
 }
