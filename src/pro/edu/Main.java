@@ -36,7 +36,9 @@ public class Main {
                 .sorted(Map.Entry.<String,Integer>comparingByValue().reversed())
                 .forEachOrdered(entry -> sorted.put(entry.getKey(), entry.getValue()));
 
-        String sorted20 = "";
+        String sorted20 = "----------------------------" + "\n"
+                + " HEAD for the task 1" + "\n"
+                + "-----------------------------------" + "\n";
         int counter = 0;
         for (Map.Entry<String,Integer> entry : sorted.entrySet()){
             counter++;
